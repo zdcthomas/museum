@@ -106,4 +106,37 @@ class MuseumTest < MiniTest::Test
 
   end
 
+  def test_exhibits_by_attendees
+    dma = Museum.new("DMA")
+    bob = Patron.new("Bob")
+    jen = Patron.new("Jennifer")
+    steve = Patron.new("Steve")
+    mark = Patron.new("Mark")
+    joe = Patron.new("Joe")
+
+    dma.add_exhibits("Manet",10)
+    dma.add_exhibits("Portraits", 15)
+    dma.add_exhibits("Art", 2)
+    dma.add_exhibits("Grecian Pottery", 10)
+
+    joe.add_interests("Art")
+    bob.add_interests("Art")
+    jen.add_interests("Art")
+    steve.add_interests("Art")
+
+    bob.add_interests("Portraits")
+    mark.add_interests("Portraits")
+    joe.add_interests("Portraits")
+
+    bob.add_interests("Manet")
+    jen.add_interests("Manet")
+
+    assert_equal ["Art", "Portraits", "Manet", "Grecian Pottery"] dma.test_exhibits_by_attendees
+
+    steve.add_interests("Portraits")
+    jen.add_interests("Portraits")
+
+    assert_equal ["Portraits", "Art", "Manet", "Grecian Pottery"] dma.test_exhibits_by_attendees
+  end
+
 end
