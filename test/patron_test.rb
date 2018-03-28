@@ -8,7 +8,7 @@ class PatronTest < MiniTest::Test
   end
 
   def test_it_existsg
-    patron = Patron.new
+    patron = Patron.new("Katarina")
     assert_instance_of Patron, patron
   end
 
