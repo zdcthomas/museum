@@ -20,4 +20,16 @@ class PatronTest < MiniTest::Test
     patron = Patron.new("Samantha")
     assert_equal "Samantha", patron.name
   end
+
+  def test_patron_can_have_interests
+    patron = Patron.new("Brian")
+    assert_equal [], patron.interests
+    patron.add_interests("Dulac Prints")
+    assert_equal ["Dulac Prints"], patron.interests
+    patron.add_interests("Turner")
+    assert_equal ["Dulac Prints", "Turner"], patron.interests
+    interest = (0...8).map { (65 + rand(26)).chr }.join
+    patron.add_interests(interest)
+    assert_equal ["Dulac Prints", "Turner", interest], patron.interests
+  end
 end
