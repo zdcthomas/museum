@@ -30,4 +30,9 @@ class Museum
     @patrons_in_exhibit[exhibit]
   end
 
+  def exhibits_by_attendees
+    binding.pry
+    sorted_exhibits =  @patrons_in_exhibit.keys.sort_by{|patrons| patrons.count}
+  end
+
 end

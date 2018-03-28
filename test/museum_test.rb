@@ -131,12 +131,19 @@ class MuseumTest < MiniTest::Test
     bob.add_interests("Manet")
     jen.add_interests("Manet")
 
-    assert_equal ["Art", "Portraits", "Manet", "Grecian Pottery"] dma.test_exhibits_by_attendees
+    dma.admit(bob)
+    dma.admit(jen)
+    dma.admit(joe)
+    dma.admit(mark)
+    dma.admit(steve)
+
+
+    assert_equal ["Art", "Portraits", "Manet", "Grecian Pottery"], dma.exhibits_by_attendees
 
     steve.add_interests("Portraits")
     jen.add_interests("Portraits")
 
-    assert_equal ["Portraits", "Art", "Manet", "Grecian Pottery"] dma.test_exhibits_by_attendees
+    assert_equal ["Portraits", "Art", "Manet", "Grecian Pottery"], dma.exhibits_by_attendees
   end
 
 end
