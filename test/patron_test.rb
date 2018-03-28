@@ -27,7 +27,7 @@ class PatronTest < MiniTest::Test
   end
 
   def test_patron_can_add_interests
-    patron = Patron.new("Horace")
+    patron = Patron.new("Horace")g
     patron.add_interests("Dulac Prints")
     assert_equal ["Dulac Prints"], patron.interests
     patron.add_interests("Turner")
