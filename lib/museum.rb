@@ -11,5 +11,3 @@ class Museum
     @exhibits[name] = cost
   end
 end
-
-binding.pry
