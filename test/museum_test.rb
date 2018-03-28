@@ -23,8 +23,17 @@ class MuseumTest < MiniTest::Test
     assert_equal name, museum.name
   end
 
+  binding.pry
   def test_museum_can_have_exhibits
     museum = Museum.new("DMA")
     assert_instance_of Hash, museum.exhibits
+    museum.add_exhibits("modrian",5)
+    assert_equal {"modrian"=>5}, muesum.exhibits
+    museum.add_exhibits("Manet",2)
+    assert_equal {"Manet"=>2}, museum.exhibits
+    museum.add_exhibits("Sezane",8)
+    assert_equal {"Manet"=>2, "Sezane"=>8}, museum.exhibits
+    museum.add_exhibits("",0)
+    assert_equal {"Manet"=>2, "Sezane"=>8, ""=>0}, museum.exhibits
   end
 end
