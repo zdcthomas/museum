@@ -49,21 +49,29 @@ class MuseumTest < MiniTest::Test
   def test_museum_can_admit_patrons
     dma = Museum.new("DMA")
     bob = Patron.new("Bob")
+    jen = Patron.new("Jennifer")
 
     bob.add_interests("Impressionism")
     bob.add_interests("Rocks")
 
+    jen.add_interests("Impressionism")
+    jen.add_interests("Monet")
+    jen.add_interests("Grecian Pottery")
+
     dma.add_exhibits("Manet",10)
     dma.add_exhibits("Impressionism", 15)
     dma.add_exhibits("Rocks", 2)
-
-
+    dma.add_exhibits("Grecian Pottery", 10)
 
     assert_equal 0, dma.revenue
 
     dma.admit(bob)
 
     assert_equal 27, dma.revenue
+
+    dma.admit(jen)
+
+    assert_equal 62, dma.revenue
 
   end
 

@@ -17,7 +17,9 @@ class Museum
   def admit(patron)
     @revenue += 10
     patron.interests.each do |interest|
-      @revenue += @exhibits[interest]
+      unless @exhibits[interest].nil?
+        @revenue += @exhibits[interest]
+      end 
     end
   end
 
