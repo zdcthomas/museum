@@ -72,6 +72,35 @@ class MuseumTest < MiniTest::Test
     dma.admit(jen)
 
     assert_equal 62, dma.revenue
+  end
+
+  def test_patrons_of_exhibit
+    dma = Museum.new("DMA")
+    bob = Patron.new("Bob")
+    jen = Patron.new("Jennifer")
+
+    dma.add_exhibits("Manet",10)
+    dma.add_exhibits("Portraits", 15)
+    dma.add_exhibits("Art", 2)
+    dma.add_exhibits("Grecian Pottery", 10)
+
+    bob.add_interests("Art")
+
+    jen.add_interests("Portraits")
+    jen.add_interests("Manet")
+    jen.add_interests("Cubism")
+
+    dma.admit(bob)
+    assert_equal [], dma.patrons_of("Portraits")
+    assert_equal [], dma.patrons_of("Manet")
+    assert_equal [], dma.patrons_of("Grecian Pottery")
+    assert_equal [bob], dma.patrons_of("Art")
+
+    dma.admit(jen)
+    assert_equal [jen], dma.patrons_of("Portraits")
+    assert_equal [jen], dma.patrons_of("Manet")
+    assert_equal [], dma.patrons_of("Grecian Pottery")
+    assert_equal [bob, jen], dma.patrons_of("Art")
 
   end
 
