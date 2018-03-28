@@ -24,6 +24,10 @@ class PatronTest < MiniTest::Test
   def test_patron_can_have_interests
     patron = Patron.new("Brian")
     assert_equal [], patron.interests
+  end
+
+  def test_patron_can_add_interests
+    patron = Patron.new("Horace")
     patron.add_interests("Dulac Prints")
     assert_equal ["Dulac Prints"], patron.interests
     patron.add_interests("Turner")
