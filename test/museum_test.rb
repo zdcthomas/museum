@@ -26,6 +26,9 @@ class MuseumTest < MiniTest::Test
   def test_museum_can_have_exhibits
     museum = Museum.new("DMA")
     assert_instance_of Hash, museum.exhibits
+  end
+  def test_museum_can_add_exhibits
+    museum = Museum.new("DMA")
     museum.add_exhibits("modrian",5)
     assert_equal ["modrian"], museum.exhibits.keys
     assert_equal [5], museum.exhibits.values
@@ -37,4 +40,10 @@ class MuseumTest < MiniTest::Test
     assert_equal ["modrian","Manet", "Sezane", ""], museum.exhibits.keys
     assert_equal [5,2,8,0], museum.exhibits.values
   end
+
+  def test_museum_can_have_revenue
+    dma = Museum.new("DMA")
+    assert_equal 0, dma.revenue
+  end
+
 end
