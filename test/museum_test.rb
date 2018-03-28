@@ -22,4 +22,9 @@ class MuseumTest < MiniTest::Test
     museum = Museum.new(name)
     assert_equal name, museum.name
   end
+
+  def test_museum_can_have_exhibits
+    museum = Museum.new("DMA")
+    assert_instance_of Hash, museum.exhibits
+  end
 end
