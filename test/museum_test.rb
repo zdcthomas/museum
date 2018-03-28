@@ -55,13 +55,15 @@ class MuseumTest < MiniTest::Test
 
     dma.add_exhibits("Manet",10)
     dma.add_exhibits("Impressionism", 15)
+    dma.add_exhibits("Rocks", 2)
+
+
 
     assert_equal 0, dma.revenue
 
     dma.admit(bob)
 
-    assert_equal 25, dma.revenue
-
+    assert_equal 27, dma.revenue
 
   end
 

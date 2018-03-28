@@ -1,4 +1,5 @@
 require 'pry'
+require_relative 'patron'
 class Museum
   attr_reader :name,
               :exhibits,
@@ -12,4 +13,12 @@ class Museum
   def add_exhibits(name, cost)
     @exhibits[name] = cost
   end
+
+  def admit(patron)
+    @revenue += 10
+    patron.interests.each do |interest|
+      @revenue += @exhibits[interest]
+    end
+  end
+
 end
