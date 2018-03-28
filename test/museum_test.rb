@@ -46,4 +46,23 @@ class MuseumTest < MiniTest::Test
     assert_equal 0, dma.revenue
   end
 
+  def test_museum_can_admit_patrons
+    dma = Museum.new("DMA")
+    bob = Patron.new("Bob")
+
+    bob.add_interests("Impressionism")
+    bob.add_interests("Rocks")
+
+    dma.add_exhibits("Manet",10)
+    dma.add_exhibits("Impressionism", 15)
+
+    assert_equal 0, dma.revenue
+
+    dma.admit(bob)
+
+    assert_equal 25, dma.revenue
+
+
+  end
+
 end
