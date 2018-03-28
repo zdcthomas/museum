@@ -1,4 +1,5 @@
 require 'pry'
+require_relative '../lib/patron'
 require "Minitest/autorun"
 require "Minitest/pride"
 
