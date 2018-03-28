@@ -85,22 +85,24 @@ class MuseumTest < MiniTest::Test
     dma.add_exhibits("Grecian Pottery", 10)
 
     bob.add_interests("Art")
+    bob.add_interests("Portraits")
 
     jen.add_interests("Portraits")
     jen.add_interests("Manet")
     jen.add_interests("Cubism")
 
     dma.admit(bob)
-    assert_equal [], dma.patrons_of("Portraits")
+    assert_equal [bob], dma.patrons_of("Art")
     assert_equal [], dma.patrons_of("Manet")
     assert_equal [], dma.patrons_of("Grecian Pottery")
-    assert_equal [bob], dma.patrons_of("Art")
+    assert_equal [bob], dma.patrons_of("Portraits")
 
     dma.admit(jen)
-    assert_equal [jen], dma.patrons_of("Portraits")
+    # binding.pry
+    assert_equal [bob,jen], dma.patrons_of("Portraits")
     assert_equal [jen], dma.patrons_of("Manet")
     assert_equal [], dma.patrons_of("Grecian Pottery")
-    assert_equal [bob, jen], dma.patrons_of("Art")
+    assert_equal [bob], dma.patrons_of("Art")
 
   end
 
